@@ -1,10 +1,9 @@
-# homebridge-light
-
+# homebridge-tuyalight
 
 ```
 "accessories": [
     {
-        "accessory":"light",
+        "accessory":"tuyalight",
         "name":"Bedroom Light",
         "ip": "",
         "id": "",
@@ -13,3 +12,5 @@
     ...
 ]
 ```
+
+# TODO: how to find the parameters ip, id and key from tuya switch
