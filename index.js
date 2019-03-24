@@ -1,11 +1,10 @@
-var request = require("request");
 const TuyAPI = require('tuyapi');
 var Service, Characteristic;
 
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    homebridge.registerAccessory("homebridge-light", "light", controller);
+    homebridge.registerAccessory("homebridge-tuyalight", "tuyalight", controller);
 }
 
 function controller(log, config) {
@@ -33,12 +32,11 @@ controller.prototype.getOn = function(callback) {
     }
     const device = new TuyAPI(option);
     device.find().then(() => {
-        // Connect to device
         device.connect();
     });
     device.on('data', data => {
         callback(null, data.dps['1'])
-        // Disconnect after 10 seconds
+        console.log(`[tuyalight] ${this.name} is ${data.dps['1'] ? 'on.' : 'off.'}`);
         setTimeout(() => { device.disconnect(); }, 0);
     });
 }
@@ -52,12 +50,12 @@ controller.prototype.setOn = function(on, callback) {
     }
     const device = new TuyAPI(option);
     device.find().then(() => {
-        // Connect to device
         device.connect();
     });
     device.on('connected', () => {
-        console.log('Connected to device!');
         device.set({set: on});
+        callback(null, on);
+        console.log(`[tuyalight] ${this.name} is turned ${on ? 'on.' : 'off.'}`);
         setTimeout(() => { device.disconnect(); }, 0);
     });
 }

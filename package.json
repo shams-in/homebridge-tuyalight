@@ -1,10 +1,18 @@
 {
-  "name": "homebridge-light",
-  "version": "1.0.0",
+  "name": "homebridge-tuyalight",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "tuyapi": "^4.0.3"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shams-in/homebridge-tuyalight.git"
   },
   "keywords": [
     "homebridge-plugin"
@@ -13,10 +21,10 @@
     "node": ">=0.12.0",
     "homebridge": ">=0.2.0"
   },
-  "author": "",
+  "author": "mail@shams.in",
   "license": "ISC",
-  "dependencies": {
-    "request": "^2.67.0",
-    "tuyapi": "^4.0.3"
-  }
+  "bugs": {
+    "url": "https://github.com/shams-in/homebridge-tuyalight/issues"
+  },
+  "homepage": "https://github.com/shams-in/homebridge-tuyalight#readme"
 }
